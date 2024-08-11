@@ -8,6 +8,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Data\**" />
+    <Compile Remove="Servises\**" />
+    <Content Remove="Data\**" />
+    <Content Remove="Servises\**" />
+    <EmbeddedResource Remove="Data\**" />
+    <EmbeddedResource Remove="Servises\**" />
+    <None Remove="Data\**" />
+    <None Remove="Servises\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.16" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="6.0.16" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.5" />
@@ -28,11 +39,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Review.Domain\Review.Domain.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Data\" />
-    <Folder Include="Servises\" />
   </ItemGroup>
 
 </Project>

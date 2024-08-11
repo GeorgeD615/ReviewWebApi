@@ -1,5 +1,4 @@
-﻿using Review.Domain.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace Review.Domain.Services
 {
@@ -11,29 +10,28 @@ namespace Review.Domain.Services
         {
             this.databaseContext = databaseContext;
         }
-        public async Task<List<Feedback>> GetFeedbacksByProductIdAsync(int id)
+        public async Task<List<Models.Review>> GetAllByProductIdAsync(int productId)
         {
-            return await databaseContext.Feedbacks.ToListAsync();
+            return await databaseContext.Reviews.
+                Where(review => review.ProductId == productId && review.Status == ReviewStatus.Actual).
+                ToListAsync();
         }
 
-        public async Task<IEnumerable<Feedback?>> GetReviewAsync(int id, int productId)
+        public async Task<Models.Review?> TryGetById(int id)
         {
-            return await databaseContext.Feedbacks.Where(x => x.Id == id).ToListAsync();
+            return await databaseContext.Reviews.
+                FirstOrDefaultAsync(review => review.Id == id && review.Status == ReviewStatus.Actual);
         }
 
-        public async Task<bool> TryToDeleteReviewAsync(int id)
+        public async Task TryToDeleteByIdAsync(int id)
         {
-            try
-            {
-                var Review = await databaseContext.Feedbacks.Where(x => x.Id == id).FirstOrDefaultAsync();
-                databaseContext.Feedbacks.Remove(Review!);
-                await databaseContext.SaveChangesAsync();
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
+            var review = await TryGetById(id);
+
+            if (review == null)
+                throw new NullReferenceException($"Отзыв с id = {id} не найден.");
+
+            review.Status = ReviewStatus.Deleted;
+            await databaseContext.SaveChangesAsync();
         }
     }
 }

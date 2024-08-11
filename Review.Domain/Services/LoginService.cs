@@ -15,13 +15,8 @@ namespace Review.Domain.Services
         {
             var containsLogin = databaseContext.Logins;
             foreach (var item in containsLogin)
-            {
                 if(item.UserName.Equals(login.UserName) && item.Password.Equals(login.Password))
-                {
                     return true;
-                    break;
-                }
-            }
             return false;
         }
     }

@@ -48,9 +48,8 @@ internal class Program
         });
         var connectionString = builder.Configuration.GetConnectionString("Review_Database");
         builder.Services.AddDbContext<DataBaseContext>(x => x.UseSqlServer(connectionString));
-        builder.Services.AddScoped<IReviewService, ReviewService>();
-        builder.Services.AddScoped<ICacheService, CacheService>();
-        builder.Services.AddScoped<LoginService>();
+        builder.Services.AddTransient<IReviewService, ReviewService>();
+        builder.Services.AddTransient<ILoginService, LoginService>();
         builder.Services.AddAuthentication(opt => {
             opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
             opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
