@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration.UserSecrets;
 using Review.Domain.Services;
 using ReviewsWebApplication.Models;
 
@@ -48,9 +47,25 @@ namespace ReviewsWebApplication.Controllers
             }
         }
 
+        [HttpPost("Create")]
+        public async Task<ActionResult> CreateAsync(ReviewCreateModelApi reviewCreateModel)
+        {
+            try
+            {
+                var review = reviewCreateModel.ToReview();
+                await reviewService.CreateAsync(review);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                logger.LogError(e.Message, e);
+                return BadRequest(new { Error = e.Message });
+            }
+        }
+
         //[Authorize]
         [HttpDelete("DeleteById")]
-        public async Task<ActionResult<List<Review.Domain.Models.Review>>> DeleteByIdAsync(int id)
+        public async Task<ActionResult> DeleteByIdAsync(int id)
         {
             try
             {

@@ -10,6 +10,13 @@ namespace Review.Domain.Services
         {
             this.databaseContext = databaseContext;
         }
+
+        public async Task CreateAsync(Models.Review review)
+        {
+            databaseContext.Reviews.Add(review);
+            await databaseContext.SaveChangesAsync();
+        }
+
         public async Task<List<Models.Review>> GetAllByProductIdAsync(int productId)
         {
             return await databaseContext.Reviews.
