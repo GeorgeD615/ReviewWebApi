@@ -3,11 +3,11 @@
     public class ReviewApi
     {
 
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
-        public int ProductId { get; set; }
+        public Guid ProductId { get; set; }
 
-        public int UserId { get; set; }
+        public string UserId { get; set; }
 
         public string? Text { get; set; }
 

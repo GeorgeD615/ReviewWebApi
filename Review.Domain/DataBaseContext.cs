@@ -15,9 +15,6 @@ namespace Review.Domain
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            var reviews = Initialization.SetReviews();
-            modelBuilder.Entity<Models.Review>().HasData(reviews);
-
             var login = Initialization.SetLogins();
             modelBuilder.Entity<Login>().HasData(login);
         }

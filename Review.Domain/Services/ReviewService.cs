@@ -17,20 +17,20 @@ namespace Review.Domain.Services
             await databaseContext.SaveChangesAsync();
         }
 
-        public async Task<List<Models.Review>> GetAllByProductIdAsync(int productId)
+        public async Task<List<Models.Review>> GetAllByProductIdAsync(Guid productId)
         {
             return await databaseContext.Reviews.
                 Where(review => review.ProductId == productId && review.Status == ReviewStatus.Actual).
                 ToListAsync();
         }
 
-        public async Task<Models.Review?> TryGetById(int id)
+        public async Task<Models.Review?> TryGetById(Guid id)
         {
             return await databaseContext.Reviews.
                 FirstOrDefaultAsync(review => review.Id == id && review.Status == ReviewStatus.Actual);
         }
 
-        public async Task TryToDeleteByIdAsync(int id)
+        public async Task TryToDeleteByIdAsync(Guid id)
         {
             var review = await TryGetById(id);
 

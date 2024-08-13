@@ -18,7 +18,7 @@ namespace ReviewsWebApplication.Controllers
         }
 
         [HttpGet("GetByProductId")]
-        public async Task<ActionResult<List<Review.Domain.Models.Review>>> GetByProductId(int productId)
+        public async Task<ActionResult<List<Review.Domain.Models.Review>>> GetByProductId(Guid productId)
         {
             try
             {
@@ -33,7 +33,7 @@ namespace ReviewsWebApplication.Controllers
         }
 
         [HttpGet("GetById")]
-        public async Task<ActionResult<ReviewApi>> GetByIdAsync(int id)
+        public async Task<ActionResult<ReviewApi>> GetByIdAsync(Guid id)
         {
             try
             {
@@ -65,7 +65,7 @@ namespace ReviewsWebApplication.Controllers
 
         //[Authorize]
         [HttpDelete("DeleteById")]
-        public async Task<ActionResult> DeleteByIdAsync(int id)
+        public async Task<ActionResult> DeleteByIdAsync(Guid id)
         {
             try
             {

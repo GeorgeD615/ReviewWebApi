@@ -8,7 +8,7 @@ namespace ReviewsWebApplication
         public static List<ReviewApi?>? ToReviewApiModels (this List<Review.Domain.Models.Review> reviews)
         {
             if (reviews.IsNullOrEmpty())
-                return null;
+                return new List<ReviewApi?>();
 
             return reviews.Select(ToReviewApiModel).ToList();
         }
