@@ -78,5 +78,20 @@ namespace ReviewsWebApplication.Controllers
                 return BadRequest(new { Error = e.Message });
             }
         }
+
+        [HttpDelete("DeleteByUserId")]
+        public async Task<ActionResult> DeleteByUserIdAsync(string userId)
+        {
+            try
+            {
+                await reviewService.TryToDeleteByUserIdAsync(userId);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                logger.LogError(e.Message, e);
+                return BadRequest(new { Error = e.Message });
+            }
+        }
     }
 }

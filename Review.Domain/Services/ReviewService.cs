@@ -40,5 +40,15 @@ namespace Review.Domain.Services
             review.Status = ReviewStatus.Deleted;
             await databaseContext.SaveChangesAsync();
         }
+
+        public async Task TryToDeleteByUserIdAsync(string userId)
+        {
+            var userReviews = await databaseContext.Reviews.Where(r => r.UserId == userId).ToListAsync(); 
+            foreach(var review in userReviews)
+            {
+                review.Status = ReviewStatus.Deleted;
+            }
+            await databaseContext.SaveChangesAsync();
+        }
     }
 }
