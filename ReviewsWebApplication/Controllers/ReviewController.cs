@@ -63,7 +63,6 @@ namespace ReviewsWebApplication.Controllers
             }
         }
 
-        //[Authorize]
         [HttpDelete("DeleteById")]
         public async Task<ActionResult> DeleteByIdAsync(Guid id)
         {
