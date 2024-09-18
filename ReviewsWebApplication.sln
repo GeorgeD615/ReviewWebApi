@@ -5,7 +5,9 @@ VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReviewsWebApplication", "ReviewsWebApplication\ReviewsWebApplication.csproj", "{6F913F64-CEA4-4A66-A4B0-4C14F837FF0D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Review.Domain", "Review.Domain\Review.Domain.csproj", "{A21526FC-C3EA-463C-B525-8DAFB5E90244}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Review.Domain", "Review.Domain\Review.Domain.csproj", "{A21526FC-C3EA-463C-B525-8DAFB5E90244}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{CE5BDB32-6529-4F80-B24E-A2265E51932D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{A21526FC-C3EA-463C-B525-8DAFB5E90244}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A21526FC-C3EA-463C-B525-8DAFB5E90244}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A21526FC-C3EA-463C-B525-8DAFB5E90244}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE5BDB32-6529-4F80-B24E-A2265E51932D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE5BDB32-6529-4F80-B24E-A2265E51932D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE5BDB32-6529-4F80-B24E-A2265E51932D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE5BDB32-6529-4F80-B24E-A2265E51932D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,20 @@
+version: '3.4'
+services:
+  mssqlserver:
+    container_name: reviews_db
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment: 
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=1Secure*Password1
+    
+  reviewsapi:
+    container_name: reviews_api
+    image: ${DOCKER_REGISTRY-}reviews_api
+    build:
+      context: .
+      dockerfile: ReviewsWebApplication/Dockerfile
+    ports:
+      - 5001:80
+    depends_on:
+      - mssqlserver   
+    restart: unless-stopped 

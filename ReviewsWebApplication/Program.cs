@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Identity.Web;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Review.Domain;
@@ -47,7 +46,7 @@ internal class Program
         }
     });
         });
-        var connectionString = builder.Configuration.GetConnectionString("Review_Database");
+        var connectionString = builder.Configuration.GetConnectionString("docker");
         builder.Services.AddDbContext<DataBaseContext>(x => x.UseSqlServer(connectionString));
         builder.Services.AddTransient<IReviewService, ReviewService>();
         builder.Services.AddTransient<ILoginService, LoginService>();
@@ -68,13 +67,10 @@ internal class Program
         });
         var app = builder.Build();
 
-        if (app.Environment.IsDevelopment())
-        {
-            app.UseSwagger();
-            app.UseSwaggerUI(options => {
-                options.SwaggerEndpoint("/swagger/V1/swagger.json", "Secret_WebAPI");
-            });
-        }
+        app.UseSwagger();
+        app.UseSwaggerUI(options => {
+            options.SwaggerEndpoint("/swagger/V1/swagger.json", "Secret_WebAPI");
+        });
         app.UseHttpsRedirection();
         app.UseAuthentication();
         app.UseAuthorization();
