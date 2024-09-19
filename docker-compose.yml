@@ -9,10 +9,7 @@ services:
     
   reviewsapi:
     container_name: reviews_api
-    image: ${DOCKER_REGISTRY-}reviews_api
-    build:
-      context: .
-      dockerfile: ReviewsWebApplication/Dockerfile
+    image: georged615/reviews_api:latest
     ports:
       - 5001:80
     depends_on:
